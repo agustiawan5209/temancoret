@@ -9,8 +9,8 @@
 
     <!-- Fonts -->
     <link href="https://fonts.bunny.net/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
-
-    @vite(['resources/js/app.js', 'resources/css/app.css'])
+    <link rel="stylesheet" href="{{asset('build/assets/app.e1b7cd9d.css')}}">
+    @vite(['resources/js/app.js'])
 </head>
 
 <body class="antialiased">
