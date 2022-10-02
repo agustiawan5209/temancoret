@@ -2,7 +2,7 @@
 
 namespace App\View\Components;
 
-use App\Produk;
+use App\Models\Produk;
 use Illuminate\View\Component;
 
 class produklist extends Component
