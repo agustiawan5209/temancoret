@@ -149,45 +149,51 @@
                 <div
                     class="mt-4 grid grid-cols-1 gap-4 border border-gray-200 bg-gray-200 sm:grid-cols-2 lg:grid-cols-3">
                     @if (empty($reqData))
-                        @foreach ($produk as $item)
-                            <a href="#" class="relative block bg-white col-span-1">
-                                <button type="button" name="wishlist"
-                                    class="absolute right-4 top-4 rounded-full bg-black p-2 text-white">
-                                    <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"
-                                        xmlns="http://www.w3.org/2000/svg">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                            d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z">
-                                        </path>
-                                    </svg>
-                                </button>
+                       @if (!empty($produk))
+                         @foreach ($produk as $item)
+                             <a href="#" class="relative block bg-white col-span-1">
+                                 <button type="button" name="wishlist"
+                                     class="absolute right-4 top-4 rounded-full bg-black p-2 text-white">
+                                     <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                                         xmlns="http://www.w3.org/2000/svg">
+                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                             d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z">
+                                         </path>
+                                     </svg>
+                                 </button>
 
-                                <img alt="Produk" src="{{ asset('upload/' . $item->gambar) }}"
-                                    class="h-56 w-full object-contain lg:h-72 max-w-md" />
+                                 <img alt="Produk" src="{{ asset('upload/' . $item->gambar) }}"
+                                     class="h-56 w-full object-contain lg:h-72 max-w-md" />
 
-                                <div class="p-6">
-                                    <span class="inline-block bg-neutral text-white px-3 py-1 text-xs font-medium">
-                                        New
-                                    </span>
+                                 <div class="p-6">
+                                     <span class="inline-block bg-neutral text-white px-3 py-1 text-xs font-medium">
+                                         New
+                                     </span>
 
-                                    <h5 class="mt-4 text-lg font-bold">{{ $item->nama }}</h5>
+                                     <h5 class="mt-4 text-lg font-bold">{{ $item->nama }}</h5>
 
-                                    <p class="mt-2 text-sm font-medium text-gray-600">{{ $item->deskripsi }}</p>
-                                    <p class="mt-2 text-sm font-medium text-gray-600">Katalog : {{ $item->katalog }}</p>
-                                    <p class="mt-2 text-sm font-medium text-gray-600">Jenis :{{ $item->jenis }}</p>
+                                     <p class="mt-2 text-sm font-medium text-gray-600">{{ $item->deskripsi }}</p>
+                                     <p class="mt-2 text-sm font-medium text-gray-600">Katalog : {{ $item->katalog }}</p>
+                                     <p class="mt-2 text-sm font-medium text-gray-600">Jenis :{{ $item->jenis }}</p>
 
-                                    <button name="add" type="button"
-                                        class="mt-4 flex w-full items-center justify-center rounded-sm bg-neutral text-white px-8 py-4">
-                                        <span class="text-sm font-medium">Pesan Sekarang</span>
+                                     <button name="add" type="button"
+                                         class="mt-4 flex w-full items-center justify-center rounded-sm bg-neutral text-white px-8 py-4">
+                                         <span class="text-sm font-medium">Pesan Sekarang</span>
 
-                                        <svg class="ml-1.5 h-5 w-5" xmlns="http://www.w3.org/2000/svg" fill="none"
-                                            viewBox="0 0 24 24" stroke="currentColor">
-                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                                d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
-                                        </svg>
-                                    </button>
-                                </div>
-                            </a>
-                        @endforeach
+                                         <svg class="ml-1.5 h-5 w-5" xmlns="http://www.w3.org/2000/svg" fill="none"
+                                             viewBox="0 0 24 24" stroke="currentColor">
+                                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                 d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
+                                         </svg>
+                                     </button>
+                                 </div>
+                             </a>
+                         @endforeach
+                       @else
+                       <div class="container mx-auto">
+                        Maaf Pencarian Tidak ada
+                    </div>
+                       @endif
                     @else
                         @foreach ((object) $reqData as $item => $key)
                         @php
