@@ -10,7 +10,8 @@
         "laravel/framework": "^9.19",
         "laravel/sanctum": "^3.0",
         "laravel/tinker": "^2.7",
-        "realrashid/sweet-alert": "^5.1"
+        "realrashid/sweet-alert": "^5.1",
+        "ultramsg/whatsapp-php-sdk": "^2.0"
     },
     "require-dev": {
         "appzcoder/crud-generator": "^3.3",

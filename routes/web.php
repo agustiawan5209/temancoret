@@ -25,6 +25,7 @@ Route::get('/', function () {
     return view('welcome', compact('produk', 'profile'));
 });
 Route::get('produk/jenis', [ProdukController::class, 'cariJenis'])->name('Cari-Jenis');
+Route::get('chat/{id}', [ProdukController::class, 'whatsapp'])->name('whatsapp');
 
 Route::get('/dashboard', function () {
     return view('dashboard');

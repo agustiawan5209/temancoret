@@ -168,11 +168,18 @@ class ProdukController extends Controller
         $data = $request->type;
 
         foreach ((object) $data as $item => $key) {
-            $produk[] = produk::where('jenis', 'like', ''. $key .'')->latest()
-            ->get();
+            $produk[] = produk::where('jenis', 'like', '' . $key . '')
+                ->latest()
+                ->get();
         }
-        $profile =profile::find(1);
+        $profile = profile::find(1);
         // dd($produk);
         return view('welcome', compact('produk', 'profile'));
+    }
+    public function whatsapp($id)
+    {
+        $produk = produk::find($id);
+        $profile = profile::find(1);
+        return redirect()->to("https://wa.me/" . $profile->nomor . "?text=". $produk->nama);
     }
 }
