@@ -1,27 +1,28 @@
 <x-layout.app title="Dashboard">
-    @if (empty($reqCari))
-        <div class="bg-white px-2 md:px-20 py-10">
-            <div class="hero min-h-16 md:mx-auto"
-                style="background-image: url('{{ asset('image/save.jpg') }}'); background-size:auto; background-position-x: inherit;box-shadow:inset 0 0 0 2000px rgba(0, 0, 0, 0.514);">
-                <div class="hero-content flex-col lg:flex-row-reverse">
-                    <div class="max-w-md carousel rounded-box">
-                        @for ($i = 7; $i < 14; $i++)
-                            <div class="carousel-item w-full">
-                                <img src="{{ asset('image/img (' . $i . ').jpeg') }}" class="w-full"
-                                    alt="Tailwind CSS Carousel component" />
-                            </div>
-                        @endfor
-                    </div>
-                    <div class="text-center">
-                        <img src="{{ asset('' . $profile->logo . '') }}" class="drop-shadow-lg shadow-white"
-                            class="w-1/2" alt="" srcset="">
-                        <h4 class="text-white font-banger text-2xl drop-shadow-sm">{{ $profile->deskripsi }}</h4>
+    <section>
+        @if (empty($reqCari))
+            <div class="bg-white px-2 md:px-20 py-10">
+                <div class="hero min-h-16 md:mx-auto"
+                    style="background-image: url('{{ asset('image/save.jpg') }}'); background-size:auto; background-position-x: inherit;box-shadow:inset 0 0 0 2000px rgba(0, 0, 0, 0.514);">
+                    <div class="hero-content flex-col lg:flex-row-reverse">
+                        <div class="max-w-md carousel rounded-box">
+                            @for ($i = 7; $i < 14; $i++)
+                                <div class="carousel-item w-full">
+                                    <img src="{{ asset('image/img (' . $i . ').jpeg') }}" class="w-full"
+                                        alt="Tailwind CSS Carousel component" />
+                                </div>
+                            @endfor
+                        </div>
+                        <div class="text-center">
+                            <img src="{{ asset('' . $profile->logo . '') }}" class="drop-shadow-lg shadow-white"
+                                class="w-1/2" alt="" srcset="">
+                            <h4 class="text-white font-banger text-2xl drop-shadow-sm">{{ $profile->deskripsi }}</h4>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-    @endif
-    <section>
+        @endif
+
         <div class="mx-auto max-w-screen-xl px-4 py-12 sm:px-6 lg:px-8">
             <div class="grid grid-cols-1 gap-4 lg:grid-cols-4 lg:items-start">
                 <div class="lg:sticky lg:top-4 bg-neutral text-white">
@@ -225,51 +226,49 @@
                             @endforeach
                         @else
                             @if (!empty($data1)) --}}
-                            @php
-                                dd($data1);
-                            @endphp
-                                @foreach ($data1 as $item)
-                                    <section href="#" class="relative block bg-white col-span-1">
-                                        <button type="button" name="wishlist"
-                                            class="absolute right-4 top-4 rounded-full bg-black p-2 text-white">
-                                            <svg class="h-4 w-4" fill="none" stroke="currentColor"
-                                                viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                                    d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z">
-                                                </path>
-                                            </svg>
-                                        </button>
 
-                                        <img alt="Produk" src="{{ asset('upload/' . $item->gambar) }}"
-                                            class="h-56 w-full object-contain lg:h-72 max-w-md" />
+                        @foreach ($data1 as $item)
+                            <section href="#" class="relative block bg-white col-span-1">
+                                <button type="button" name="wishlist"
+                                    class="absolute right-4 top-4 rounded-full bg-black p-2 text-white">
+                                    <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                                        xmlns="http://www.w3.org/2000/svg">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                            d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z">
+                                        </path>
+                                    </svg>
+                                </button>
 
-                                        <div class="p-6">
-                                            <span class="inline-block bg-neutral text-white px-3 py-1 text-xs font-medium">
-                                                New
-                                            </span>
+                                <img alt="Produk" src="{{ asset('upload/' . $item->gambar) }}"
+                                    class="h-56 w-full object-contain lg:h-72 max-w-md" />
 
-                                            <h5 class="mt-4 text-lg font-bold">{{ $item->nama }}</h5>
+                                <div class="p-6">
+                                    <span class="inline-block bg-neutral text-white px-3 py-1 text-xs font-medium">
+                                        New
+                                    </span>
 
-                                            <p class="mt-2 text-sm font-medium text-gray-600">{{ $item->deskripsi }}</p>
-                                            <p class="mt-2 text-sm font-medium text-gray-600">Katalog :
-                                                {{ $item->katalog }}
-                                            </p>
-                                            <p class="mt-2 text-sm font-medium text-gray-600">Jenis :{{ $item->jenis }}
-                                            </p>
+                                    <h5 class="mt-4 text-lg font-bold">{{ $item->nama }}</h5>
 
-                                            <a href="{{ route('whatsapp', ['id' => $item->id]) }}"
-                                                class="mt-4 flex w-full items-center justify-center rounded-sm bg-neutral text-white px-8 py-4">
-                                                <span class="text-sm font-medium">Pesan Sekarang</span>
-                                                <svg class="ml-1.5 h-5 w-5" xmlns="http://www.w3.org/2000/svg"
-                                                    fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                                        d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
-                                                </svg>
-                                            </a>
-                                        </div>
-                                    </section>
-                                @endforeach
-                            {{-- @else
+                                    <p class="mt-2 text-sm font-medium text-gray-600">{{ $item->deskripsi }}</p>
+                                    <p class="mt-2 text-sm font-medium text-gray-600">Katalog :
+                                        {{ $item->katalog }}
+                                    </p>
+                                    <p class="mt-2 text-sm font-medium text-gray-600">Jenis :{{ $item->jenis }}
+                                    </p>
+
+                                    <a href="{{ route('whatsapp', ['id' => $item->id]) }}"
+                                        class="mt-4 flex w-full items-center justify-center rounded-sm bg-neutral text-white px-8 py-4">
+                                        <span class="text-sm font-medium">Pesan Sekarang</span>
+                                        <svg class="ml-1.5 h-5 w-5" xmlns="http://www.w3.org/2000/svg" fill="none"
+                                            viewBox="0 0 24 24" stroke="currentColor">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
+                                        </svg>
+                                    </a>
+                                </div>
+                            </section>
+                        @endforeach
+                        {{-- @else
                                 <div class="container mx-auto col-span-1">
                                     Maaf Kosong
                                 </div>
