@@ -247,7 +247,7 @@
                             @endforeach
                         @else
                             <div class="container mx-auto col-span-1">
-                                Maaf Pencarian Tidak ada
+                                Maaf Kosong
                             </div>
                         @endif
                     @endif
