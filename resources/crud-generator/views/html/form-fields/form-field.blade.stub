@@ -1,0 +1,1 @@
+<input class="input input-bordered w-full max-w-xs" name="%%itemName%%" type="%%fieldType%%" id="%%itemName%%" value="{{ isset($%%crudNameSingular%%->%%itemName%%) ? $%%crudNameSingular%%->%%itemName%% : ''}}" %%required%%>

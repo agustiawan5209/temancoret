@@ -1,0 +1,5 @@
+%%formFieldsHtml%%
+
+<div class="form-group">
+    <button class="btn btn-sm" type="submit" >{{ $formMode === 'edit' ? 'Edit' : 'Tambah' }}</button>
+</div>
