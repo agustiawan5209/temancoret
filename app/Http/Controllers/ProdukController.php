@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\produk;
+use App\Models\Produk;
 use App\Http\Requests;
 
 use App\Models\profile;
@@ -23,11 +23,11 @@ class ProdukController extends Controller
         $keyword = $request->get('search');
         $perPage = 25;
         if (!empty($keyword)) {
-            $produk = produk::where('nama', 'like', '' . $keyword . '')
+            $produk = Produk::where('nama', 'like', '' . $keyword . '')
                 ->latest()
                 ->paginate($perPage);
         } else {
-            $produk = produk::latest()->paginate($perPage);
+            $produk = Produk::latest()->paginate($perPage);
         }
 
         return view('produk.produk.index', compact('produk'));
@@ -66,7 +66,7 @@ class ProdukController extends Controller
         $request->gambar->storeAs('upload', $nama);
         // $disk = Storage::disk('upload')->put($request->gambar, $nama);
         $data = array_replace($requestData, ['gambar' => $nama]);
-        produk::create($data);
+        Produk::create($data);
         $file = Storage::disk('public')->get('uploads\filename.jpg');
         Alert::success('Info', 'Berhasil');
         return redirect()
@@ -83,7 +83,7 @@ class ProdukController extends Controller
      */
     public function show($id)
     {
-        $produk = produk::findOrFail($id);
+        $produk = Produk::findOrFail($id);
         return view('produk.produk.show', compact('produk'));
     }
 
@@ -96,7 +96,7 @@ class ProdukController extends Controller
      */
     public function edit($id)
     {
-        $produk = produk::findOrFail($id);
+        $produk = Produk::findOrFail($id);
 
         return view('produk.produk.edit', compact('produk'));
     }
@@ -120,7 +120,7 @@ class ProdukController extends Controller
         ]);
 
         $requestData = $request->all();
-        $produk = produk::findOrFail($id);
+        $produk = Produk::findOrFail($id);
         $nama = $produk->nama;
 
         if (!empty($request->gambar)) {
@@ -153,7 +153,7 @@ class ProdukController extends Controller
      */
     public function destroy($id)
     {
-        $produk = produk::find($id);
+        $produk = Produk::find($id);
         if (Storage::disk('upload')->exists($produk->gambar)) {
             Storage::disk('upload')->delete($produk->gambar);
         }
@@ -168,7 +168,7 @@ class ProdukController extends Controller
         $data = $request->type;
 
         foreach ((object) $data as $item => $key) {
-            $produk[] = produk::where('jenis', 'like', '' . $key . '')
+            $produk[] = Produk::where('jenis', 'like', '' . $key . '')
                 ->latest()
                 ->get();
         }
@@ -178,7 +178,7 @@ class ProdukController extends Controller
     }
     public function whatsapp($id)
     {
-        $produk = produk::find($id);
+        $produk = Produk::find($id);
         $profile = profile::find(1);
         return redirect()->to("https://wa.me/" . $profile->nomor . "?text=". $produk->nama);
     }
