@@ -1,12 +1,13 @@
 <?php
 
-use App\Http\Controllers\Admin\profileController;
-use App\Http\Controllers\Admin\TeamController;
-use App\Http\Controllers\Admin\ukuranController;
-use App\Http\Controllers\PostsController;
-use App\Http\Controllers\ProdukController;
+use App\Models\Produk;
 use App\Models\profile;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\PostsController;
+use App\Http\Controllers\ProdukController;
+use App\Http\Controllers\Admin\TeamController;
+use App\Http\Controllers\Admin\ukuranController;
+use App\Http\Controllers\Admin\profileController;
 
 /*
 |--------------------------------------------------------------------------
@@ -22,7 +23,8 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     $reqCari = '';
     $profile =profile::find(1);
-    return view('welcome', compact('reqCari', 'profile'));
+    $data1 = Produk::all();
+    return view('welcome', compact('reqCari', 'profile', 'data1'));
 });
 Route::get('produk/jenis', [ProdukController::class, 'cariJenis'])->name('Cari-Jenis');
 Route::get('chat/{id}', [ProdukController::class, 'whatsapp'])->name('whatsapp');
