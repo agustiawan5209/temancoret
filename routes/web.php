@@ -20,9 +20,9 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    $produk = '';
+    $reqCari = '';
     $profile =profile::find(1);
-    return view('welcome', compact('produk', 'profile'));
+    return view('welcome', compact('reqCari', 'profile'));
 });
 Route::get('produk/jenis', [ProdukController::class, 'cariJenis'])->name('Cari-Jenis');
 Route::get('chat/{id}', [ProdukController::class, 'whatsapp'])->name('whatsapp');
