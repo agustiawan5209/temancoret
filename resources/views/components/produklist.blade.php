@@ -203,7 +203,7 @@
                             @endif
                         @endforeach
                     @elseif(empty($reqData))
-                        @if (!empty($produk))
+                        @if ($produk->count() > 0)
                             @foreach ($produk as $item)
                                 <section href="#" class="relative block bg-white col-span-1">
                                     <button type="button" name="wishlist"
