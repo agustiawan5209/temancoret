@@ -148,7 +148,7 @@
 
                 <div
                     class="mt-4 grid grid-cols-1 gap-4 border border-gray-200 bg-gray-200 sm:grid-cols-2 lg:grid-cols-3">
-                    @if (!empty($produk) || empty($reqData))
+                    @if (!empty($produk) && empty($reqData))
                         @foreach ($produk as $item)
                             <section href="#" class="relative block bg-white col-span-1">
                                 <button type="button" name="wishlist"
@@ -161,7 +161,8 @@
                                     </svg>
                                 </button>
 
-                                <img alt="Produk" src="{{ asset('upload/' . $item->gambar) }}" class="h-56 w-full object-contain lg:h-72 max-w-md" />
+                                <img alt="Produk" src="{{ asset('upload/' . $item->gambar) }}"
+                                    class="h-56 w-full object-contain lg:h-72 max-w-md" />
 
                                 <div class="p-6">
                                     <span class="inline-block bg-neutral text-white px-3 py-1 text-xs font-medium">
@@ -175,7 +176,8 @@
                                     </p>
                                     <p class="mt-2 text-sm font-medium text-gray-600">Jenis :{{ $item->jenis }}</p>
 
-                                    <a href="{{ route('whatsapp', ['id' => $item->id]) }}" class="mt-4 flex w-full items-center justify-center rounded-sm bg-neutral text-white px-8 py-4">
+                                    <a href="{{ route('whatsapp', ['id' => $item->id]) }}"
+                                        class="mt-4 flex w-full items-center justify-center rounded-sm bg-neutral text-white px-8 py-4">
                                         <span class="text-sm font-medium">Pesan Sekarang</span>
                                         <svg class="ml-1.5 h-5 w-5" xmlns="http://www.w3.org/2000/svg" fill="none"
                                             viewBox="0 0 24 24" stroke="currentColor">
