@@ -26,9 +26,9 @@ class produklist extends Component
     public function render()
     {
         // dd($this->reqData);
-        $produk = Produk::latest()->paginate(10);
+        $data1 = Produk::latest()->paginate(10);
         return view('components.produklist', [
-            'produk'=> $produk
+            'data1'=> $data1
         ]);
     }
 }
