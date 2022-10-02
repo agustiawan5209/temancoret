@@ -225,6 +225,9 @@
                             @endforeach
                         @else
                             @if (!empty($data1)) --}}
+                            @php
+                                dd($data1);
+                            @endphp
                                 @foreach ($data1 as $item)
                                     <section href="#" class="relative block bg-white col-span-1">
                                         <button type="button" name="wishlist"
