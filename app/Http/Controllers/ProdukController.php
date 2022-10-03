@@ -178,6 +178,6 @@ class ProdukController extends Controller
     {
         $produk = Produk::find($id);
         $profile = profile::find(1);
-        return redirect()->to("https://wa.me/" . $profile->nomor . "?text=". $produk->nama);
+        return redirect()->to("https://wa.me/" . $profile->wa . "?text=". $produk->nama);
     }
 }

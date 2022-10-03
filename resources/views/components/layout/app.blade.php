@@ -38,7 +38,7 @@
                 <a href="{{$profile->ig}}">
                     <img src="{{asset('image/icon/icons8-instagram-48.png')}}" class="w-10 text-white" alt="">
                 </a>
-                <a href="https://wa.me/{{$profile->nomor }}">
+                <a href="https://wa.me/{{$profile->wa }}">
                     <img src="{{asset('image/icon/icons8-whatsapp-48.png')}}" class="w-10 text-white" alt="">
 
                 </a>
