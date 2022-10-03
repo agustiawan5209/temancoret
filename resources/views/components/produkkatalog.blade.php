@@ -26,7 +26,7 @@
                     @endfor
                 </ul>
 
-                <div class="swiper-pagination !relative !bottom-0 mx-auto md:mt-8 max-w-3xl"></div>
+                <div class="swiper-pagination !relative !bottom-0 mx-auto max-w-3xl"></div>
             </div>
         </div>
     </div>
