@@ -315,7 +315,7 @@
                                                 <img alt="Produk" src="{{ asset('upload/' . $item->gambar) }}"
                                                 class="h-56 w-full object-contain lg:h-72 max-w-md" />
                                                 <div class="modal-action">
-                                                    <label for="my-modal-5" class="btn btn-error">Tutup!</label>
+                                                    <label for="modalData1{{ $item->id }}" class="btn btn-error">Tutup!</label>
                                                     <button name="add" type="button"
                                                         class=" flex w-full items-center justify-center rounded-sm bg-neutral text-white px-8 py-4">
                                                         <span class="text-sm font-medium">Pesan Sekarang</span>
