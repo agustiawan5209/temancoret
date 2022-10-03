@@ -4,13 +4,13 @@
 
 <section class="bg-neutral">
     <div class="mx-auto max-w-screen-xl px-4 py-12 sm:px-6 lg:px-8 ">
-        <h2 class="text-2xl font-bold text-white">Featured Products</h2>
+        <h2 class="text-2xl font-bold text-white">Produk Kami</h2>
 
         <div class="mt-4">
             <div class="swiper">
                 <ul class="swiper-wrapper">
                     @for ($i = 3; $i < 10; $i++)
-                        <li class="swiper-slide">
+                        <li class="swiper-slide max-h-96">
                             <a href="#" class="relative block shadow-sm">
                                 <div class="card w-full bg-base-100 shadow-xl image-full">
                                     <figure><img src="{{asset('image/img ('. mt_rand(3,20) .').jpeg')}}" class="h-full" alt="Mural" /></figure>
