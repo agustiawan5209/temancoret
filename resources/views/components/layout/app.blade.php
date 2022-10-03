@@ -36,14 +36,14 @@
             <span class="footer-title">Social</span>
             <div class="grid grid-flow-col gap-4">
                 <a href="{{$profile->ig}}">
-                    <img src="{{asset('image/icon/icons8-instagram-48.png')}}" class="w-24 text-white" alt="">
+                    <img src="{{asset('image/icon/icons8-instagram-48.png')}}" class="w-10 text-white" alt="">
                 </a>
                 <a>
-                    <img src="{{asset('image/icon/icons8-whatsapp-48.png')}}" class="w-24 text-white" alt="">
+                    <img src="{{asset('image/icon/icons8-whatsapp-48.png')}}" class="w-10 text-white" alt="">
 
                 </a>
                 <a>
-                    <img src="{{asset('image/icon/icons8-facebook-48.png')}}" class="w-24 text-white" alt="">
+                    <img src="{{asset('image/icon/icons8-facebook-48.png')}}" class="w-10 text-white" alt="">
 
                 </a>
             </div>
