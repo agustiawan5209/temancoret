@@ -5,7 +5,6 @@
 <section class="bg-neutral">
     <div class="mx-auto max-w-screen-xl px-4 py-12 sm:px-6 lg:px-8 ">
         <h2 class="text-2xl font-bold text-white">Produk Kami</h2>
-
         <div class="mt-4">
             <div class="swiper">
                 <ul class="swiper-wrapper">
@@ -27,7 +26,7 @@
                     @endfor
                 </ul>
 
-                <div class="swiper-pagination !relative !bottom-0 mx-auto mt-8 max-w-3xl"></div>
+                <div class="swiper-pagination !relative !bottom-0 mx-auto md:mt-8 max-w-3xl"></div>
             </div>
         </div>
     </div>
