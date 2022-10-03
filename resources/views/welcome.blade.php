@@ -1,6 +1,6 @@
 <x-layout.app title="Dashboard">
     <section>
-        @if (empty($reqCari))
+        @if (empty($reqData))
             <div class="bg-white px-2 md:px-20 py-10">
                 <div class="hero min-h-16 md:mx-auto"
                     style="background-image: url('{{ asset('image/save.jpg') }}'); background-size:auto; background-position-x: inherit;box-shadow:inset 0 0 0 2000px rgba(0, 0, 0, 0.514);">
@@ -175,13 +175,13 @@
 
                         @if (!empty($reqData))
                             @foreach ((object) $reqData as $item => $key)
-
                                 @if (count($key) > 0)
-                                    <a href="#" class="relative block bg-white col-span-1">
+                                    <a href="#modalData{{ $key[$item]->id }}"
+                                        class="cursor-pointer relative block bg-white col-span-1">
                                         <button type="button" name="wishlist"
                                             class="absolute right-4 top-4 rounded-full bg-black p-2 text-white">
-                                            <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"
-                                                xmlns="http://www.w3.org/2000/svg">
+                                            <svg class="h-4 w-4" fill="none" stroke="currentColor"
+                                                viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                                     d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z">
                                                 </path>
@@ -192,7 +192,8 @@
                                             class="h-56 w-full object-contain lg:h-72 max-w-md" />
 
                                         <div class="p-6">
-                                            <span class="inline-block bg-neutral text-white px-3 py-1 text-xs font-medium">
+                                            <span
+                                                class="inline-block bg-neutral text-white px-3 py-1 text-xs font-medium">
                                                 New
                                             </span>
 
@@ -212,12 +213,46 @@
 
                                                 <svg class="ml-1.5 h-5 w-5" xmlns="http://www.w3.org/2000/svg"
                                                     fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                    <path stroke-linecap="round" stroke-linejoin="round"
+                                                        stroke-width="2"
                                                         d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
                                                 </svg>
                                             </button>
                                         </div>
+                                        <!-- Put this part before </body> tag -->
+
                                     </a>
+                                    <div class="modal" id="modalData{{ $key[$item]->id }}">
+                                        <div class="modal-box">
+                                            <img alt="Produk" src="{{ asset('upload/' . $key[$item]->gambar) }}"
+                                                class="h-56 w-full object-contain lg:h-72 max-w-md" />
+
+                                            <div class="p-6">
+                                                <h5 class="mt-4 text-lg font-bold">{{ $key[$item]->nama }}</h5>
+                                                <p class="mt-2 text-sm font-medium text-gray-600">
+                                                    {{ $key[$item]->deskripsi }}</p>
+                                                <p class="mt-2 text-sm font-medium text-gray-600">Katalog :
+                                                    {{ $key[$item]->katalog }}
+                                                </p>
+                                                <p class="mt-2 text-sm font-medium text-gray-600">Jenis
+                                                    :{{ $key[$item]->jenis }}</p>
+                                            </div>
+                                            <div class="modal-action">
+                                                <a href="#" class="btn btn-error">Tutup!</a>
+                                                <button name="add" type="button"
+                                                    class=" flex w-full items-center justify-center rounded-sm bg-neutral text-white px-8 py-4">
+                                                    <span class="text-sm font-medium">Pesan Sekarang</span>
+
+                                                    <svg class="ml-1.5 h-5 w-5" xmlns="http://www.w3.org/2000/svg"
+                                                        fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                        <path stroke-linecap="round" stroke-linejoin="round"
+                                                            stroke-width="2"
+                                                            d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
+                                                    </svg>
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
                                 @else
                                     <div class="container mx-auto">
                                         Maaf Pencarian Tidak ada
@@ -227,48 +262,90 @@
                         @else
                             @if (!empty($data1))
 
-                        @foreach ($data1 as $item)
-                            <section href="#" class="relative block bg-white col-span-1">
-                                <button type="button" name="wishlist"
-                                    class="absolute right-4 top-4 rounded-full bg-black p-2 text-white">
-                                    <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"
-                                        xmlns="http://www.w3.org/2000/svg">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                            d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z">
-                                        </path>
-                                    </svg>
-                                </button>
+                                @foreach ($data1 as $item)
+                                    <label for="modalData1{{ $item->id }}"
+                                        class="relative block bg-white col-span-1">
+                                        <button type="button" name="wishlist"
+                                            class="absolute right-4 top-4 rounded-full bg-black p-2 text-white">
+                                            <svg class="h-4 w-4" fill="none" stroke="currentColor"
+                                                viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                    d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z">
+                                                </path>
+                                            </svg>
+                                        </button>
 
-                                <img alt="Produk" src="{{ asset('upload/' . $item->gambar) }}"
-                                    class="h-56 w-full object-contain lg:h-72 max-w-md" />
+                                        <img alt="Produk" src="{{ asset('upload/' . $item->gambar) }}"
+                                            class="h-56 w-full object-contain lg:h-72 max-w-md" />
 
-                                <div class="p-6">
-                                    <span class="inline-block bg-neutral text-white px-3 py-1 text-xs font-medium">
-                                        New
-                                    </span>
+                                        <div class="p-6">
+                                            <span
+                                                class="inline-block bg-neutral text-white px-3 py-1 text-xs font-medium">
+                                                New
+                                            </span>
 
-                                    <h5 class="mt-4 text-lg font-bold">{{ $item->nama }}</h5>
+                                            <h5 class="mt-4 text-lg font-bold">{{ $item->nama }}</h5>
 
-                                    <p class="mt-2 text-sm font-medium text-gray-600">{{ $item->deskripsi }}</p>
-                                    <p class="mt-2 text-sm font-medium text-gray-600">Katalog :
-                                        {{ $item->katalog }}
-                                    </p>
-                                    <p class="mt-2 text-sm font-medium text-gray-600">Jenis :{{ $item->jenis }}
-                                    </p>
+                                            <p class="mt-2 text-sm font-medium text-gray-600">{{ $item->deskripsi }}
+                                            </p>
+                                            <p class="mt-2 text-sm font-medium text-gray-600">Katalog :
+                                                {{ $item->katalog }}
+                                            </p>
+                                            <p class="mt-2 text-sm font-medium text-gray-600">Jenis
+                                                :{{ $item->jenis }}
+                                            </p>
 
-                                    <a href="{{ route('whatsapp', ['id' => $item->id]) }}"
-                                        class="mt-4 flex w-full items-center justify-center rounded-sm bg-neutral text-white px-8 py-4">
-                                        <span class="text-sm font-medium">Pesan Sekarang</span>
-                                        <svg class="ml-1.5 h-5 w-5" xmlns="http://www.w3.org/2000/svg" fill="none"
-                                            viewBox="0 0 24 24" stroke="currentColor">
-                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                                d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
-                                        </svg>
-                                    </a>
-                                </div>
-                            </section>
-                        @endforeach
-                        @else
+                                            <a href="{{ route('whatsapp', ['id' => $item->id]) }}"
+                                                class="mt-4 flex w-full items-center justify-center rounded-sm bg-neutral text-white px-8 py-4">
+                                                <span class="text-sm font-medium">Pesan Sekarang</span>
+                                                <svg class="ml-1.5 h-5 w-5" xmlns="http://www.w3.org/2000/svg"
+                                                    fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                    <path stroke-linecap="round" stroke-linejoin="round"
+                                                        stroke-width="2"
+                                                        d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
+                                                </svg>
+                                            </a>
+                                        </div>
+                                    </label>
+                                    <input type="checkbox" id="modalData1{{ $item->id }}"
+                                        class="modal-toggle" />
+                                    <div class="modal">
+                                        <div class="modal-box w-11/12 max-w-xl flex">
+                                            <div>
+                                                <img alt="Produk" src="{{ asset('upload/' . $item->gambar) }}"
+                                                class="h-56 w-full object-contain lg:h-72 max-w-md" />
+                                                <div class="modal-action">
+                                                    <label for="my-modal-5" class="btn btn-error">Tutup!</label>
+                                                    <button name="add" type="button"
+                                                        class=" flex w-full items-center justify-center rounded-sm bg-neutral text-white px-8 py-4">
+                                                        <span class="text-sm font-medium">Pesan Sekarang</span>
+
+                                                        <svg class="ml-1.5 h-5 w-5" xmlns="http://www.w3.org/2000/svg"
+                                                            fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                            <path stroke-linecap="round" stroke-linejoin="round"
+                                                                stroke-width="2"
+                                                                d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
+                                                        </svg>
+                                                    </button>
+                                                </div>
+                                            </div>
+
+                                            <div class="p-6">
+                                                <h5 class="mt-4 text-lg font-bold">{{ $item->nama }}</h5>
+                                                <p class="mt-2 text-sm font-medium text-gray-600">
+                                                    {{ $item->deskripsi }}</p>
+                                                <p class="mt-2 text-sm font-medium text-gray-600">Katalog :
+                                                    {{ $item->katalog }}
+                                                </p>
+                                                <p class="mt-2 text-sm font-medium text-gray-600">Jenis
+                                                    :{{ $item->jenis }}
+                                                </p>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                @endforeach
+                            @else
                                 <div class="container mx-auto col-span-1">
                                     Maaf Kosong
                                 </div>
@@ -290,5 +367,6 @@
 
     <x-produkkatalog />
     <x-produkcarousel />
+    <!-- The button to open modal -->
 
 </x-layout.app>

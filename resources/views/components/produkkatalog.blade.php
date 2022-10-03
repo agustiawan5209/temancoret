@@ -11,9 +11,9 @@
                 <ul class="swiper-wrapper">
                     @for ($i = 3; $i < 10; $i++)
                         <li class="swiper-slide">
-                            <a href="/product/build-your-own-drone" class="relative block shadow-sm">
+                            <a href="#" class="relative block shadow-sm">
                                 <div class="card w-full bg-base-100 shadow-xl image-full">
-                                    <figure><img src="{{asset('image/img ('.$i.').jpeg')}}" class="h-full" alt="Mural" /></figure>
+                                    <figure><img src="{{asset('image/img ('. mt_rand(3,20) .').jpeg')}}" class="h-full" alt="Mural" /></figure>
                                     <div class="card-body">
                                         <h2 class="card-title">Mural</h2>
                                         <p>Brand Lokal Makassar</p>

@@ -14,7 +14,7 @@
     <!-- Scripts -->
     <link rel="stylesheet" href="{{asset('build/assets/app.e1b7cd9d.css')}}">
 
-    @vite(['resources/js/app.js'])
+    @vite(['resources/css/app.css','resources/js/app.js'])
     <script src="{{ asset('vendor/sweetalert/sweetalert.all.js') }}"></script>
 
 </head>
