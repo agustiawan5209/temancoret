@@ -173,7 +173,7 @@
                     <div
                         class="mt-4 grid grid-cols-1 gap-4 border border-gray-200 bg-gray-200 sm:grid-cols-2 lg:grid-cols-3">
 
-                        {{-- @if (!empty($reqData))
+                        @if (!empty($reqData))
                             @foreach ((object) $reqData as $item => $key)
 
                                 @if (count($key) > 0)
@@ -225,7 +225,7 @@
                                 @endif
                             @endforeach
                         @else
-                            @if (!empty($data1)) --}}
+                            @if (!empty($data1))
 
                         @foreach ($data1 as $item)
                             <section href="#" class="relative block bg-white col-span-1">
@@ -268,12 +268,12 @@
                                 </div>
                             </section>
                         @endforeach
-                        {{-- @else
+                        @else
                                 <div class="container mx-auto col-span-1">
                                     Maaf Kosong
                                 </div>
                             @endif
-                        @endif --}}
+                        @endif
                     </div>
                 </div>
             </div>
