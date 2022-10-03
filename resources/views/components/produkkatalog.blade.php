@@ -15,7 +15,7 @@
                                 <div class="card w-full bg-base-100 shadow-xl image-full">
                                     <figure><img src="{{asset('image/img ('. mt_rand(3,20) .').jpeg')}}" class="h-full" alt="Mural" /></figure>
                                     <div class="card-body">
-                                        <h2 class="card-title">Mural</h2>
+                                        <h2 class="card-title">TemanCoret</h2>
                                         <p>Brand Lokal Makassar</p>
                                         <div class="card-actions justify-end">
                                             <button class="btn btn-warning">Pesan Sekarang</button>
